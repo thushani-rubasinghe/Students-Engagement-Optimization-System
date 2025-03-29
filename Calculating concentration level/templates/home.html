@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Student Engagement Optimization System</title>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <style>
+      a.ex1:hover, a.ex1:active {background: lightblue; color:white}
+      .nav-borders{ border-radius: 10px;}
+  </style>
+  </head>
+  <body>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"><img src="{{ url_for('static', filename='logo.png') }}" style="height: 75px; width: auto;"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link ex1 nav-borders" aria-current="page" href="#" style="font-size: 25px;">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link ex1 nav-borders" href="/resolution" style="font-size: 25px;">Video Resolution</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link ex1 nav-borders" href="/result" style="font-size: 25px;">Final Results</a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+  <div class="container mt-5">
+        <h2 class="text-center mb-4">Student Engagement Optimization System</h2>
+        <div class="row">
+          <div class="col-md-4"></div>
+          <div class="col-md-4">
+              <div class="card mb-4">
+                  <div class="card-body">
+                      <form method="POST" action="/predict_final_student_status">
+                        <div class="mb-3">
+                          <label for="video_file_path" class="form-label">Upload the Student Video File</label>
+                          <input class="form-control" type="file" id="video_file_path" name="video_file_path">
+                        </div>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                          <button type="submit" class="btn btn-primary" onclick="startProcess()" type="button">Submit</button>
+                        </div>
+                      </form>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-4"></div>
+        </div>
+    </div>
+
+
+  <div class="container mt-5" id="processing_window">
+        <div class="row">
+          <div class="col-md-4"></div>
+          <div class="col-md-4">
+              <div class="card mb-4">
+                  <div class="card-body">
+                      <form>
+                        <div class="mb-3">
+                          <label class="form-label">Processing the video file.  &nbsp;&nbsp;&nbsp;&nbsp;</label>
+                          <div class="text-center">
+                            <button class="btn btn-light" type="button" disabled>
+                              <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                              <span role="status">Loading...</span>
+                            </button>
+
+                          </div>
+                          <div class="progress" role="progressbar" aria-label="Success example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                            <div class="progress-bar bg-success" id="progress_bar"></div>
+                          </div>
+                          <label  id="status" class="form-label"></label>
+                        </div>
+                      </form>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-4"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+  </body>
+
+</html>
+
+
+
+
+
+{% block scripts %}
+<script>
+    let processing_window = document.getElementById('processing_window')
+    let output = document.getElementById('status');
+    let progress_bar = document.getElementById('progress_bar')
+    processing_window.style.visibility = "hidden"
+
+    function sleep(ms) {
+          return new Promise(resolve => setTimeout(resolve, ms));
+       }
+
+    async function startProcess() {
+        processing_window.style.visibility = "visible"
+
+        for (let i = 1; i < 1200 ; i++) {
+             await sleep(1000);
+             fetch('http://127.0.0.1:5000/status').then((response) => response.json())
+                .then((responseData) => {
+                  console.log(responseData.result);
+                  output.innerHTML = "Status: " + responseData.result;
+                  progress_bar.innerHTML = responseData.progress + "%";
+                  progress_bar.style.width = responseData.progress + "%"
+                })
+                .catch(error => console.warn(error));
+              }
+                     console.log(data);
+                  }
+</script>
+{% endblock %}

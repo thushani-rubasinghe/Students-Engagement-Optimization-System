@@ -1,0 +1,9 @@
+Number,Student,Action Detected,Attention State,Angry Count,Disgust Count,Fear Count,Happy Count,Sad Count,Surprise Count,Neutral Count,Final Emotion,Concentration Level,Time,Attendance
+1,Achini,Not Focused,Low,34,0,5,0,56,0,38,Sad,47,100.0,Present
+2,Dulaj,Focused,High,40,0,10,0,24,1,63,Neutral,60,97.0,Present
+3,Induwara,Focused,High,38,0,6,0,15,1,72,Neutral,94,100.0,Present
+4,Nadun,Focused,High,31,0,3,22,7,0,75,Neutral,76,100.0,Present
+5,Rasindu,Focused,High,36,0,3,0,14,0,84,Neutral,87,100.0,Present
+6,Ravindu,Focused,Low,44,0,0,1,13,0,38,Angry,81,100.0,Present
+7,Sasindu,Focused,High,15,0,4,11,4,1,103,Neutral,89,100.0,Present
+8,Shehani,Focused,Low,24,0,3,23,5,0,2,Angry,68,100.0,Present
