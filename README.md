@@ -7,11 +7,16 @@ The proposed approach aims to assess student behaviors and emotions for a thorou
 
 To address this challenge, the suggested solution involves integrating an image upscaling component into the system to enhance resolution and clarity. This enhancement aims to provide educators with more accurate insights into student behavior, ultimately improving teaching methods and learning outcomes.
 
-## Results
-### Analysing the video footage
-![Logo](https://github.com/SasinduMallawarachchi/Ai-based-advanced-student-monitoring-system/blob/main/Images/User%20Interface%202.png)
-### Final Result
-![Logo](https://github.com/SasinduMallawarachchi/Ai-based-advanced-student-monitoring-system/blob/main/Images/User%20Interface%201.png)
+## Final Results
+![Screenshot 2025-02-22 204908](https://github.com/user-attachments/assets/faeab628-fa72-4f6a-8520-608072c6d100)
+![Screenshot 2025-02-22 204839](https://github.com/user-attachments/assets/fce33795-237f-4447-bca2-593f024a26fe)
 
-## Project Web Site
-- [Project Information](https://ndilsh.github.io/Edu-Watch-Website/)
+### Analysing the video footage
+![Screenshot 2025-02-22 201317](https://github.com/user-attachments/assets/74847b0f-4379-4c24-84c2-135b1e9d7c2c)
+![Screenshot 2025-02-22 202930](https://github.com/user-attachments/assets/65bd9623-50ed-43ee-a29e-694621f748d6)
+
+## Project Accuracy
+![Figure_14 (1)](https://github.com/user-attachments/assets/bbd8df91-028c-4065-9096-a38adcef54c9)
+
+
+
